@@ -64,18 +64,20 @@ char *read_line(void)
  */
 char **get_arguments(char *str)
 {
-	char *token, *separator = " ";
+	char *token, *str_dup=str;
 	int i = 0;
-
-	token = strtok(str,separator);
-	while (strtok(NULL,separator))
-		i++;
 	
-	char **tokens = (char **)malloc((i+2)*sizeof(char*));
-	token = strtok(str,separator);
-	while (token)
+	char **tokens = (char **)malloc(BUFFER*sizeof(char));
+	i = 0;
+	token = strtok(str,SEPARATORS);
+	
+	while (token!= NULL)
 	{
-		token = strtok(NULL,separator);
+		tokens[i]=token;
+		token = strtok(NULL,SEPARATORS);
+		i++;
 	}
-	
+	tokens[i]=NULL;
+	return(tokens);
+  
 }

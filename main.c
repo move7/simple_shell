@@ -2,16 +2,16 @@
 
 int main()
 {
-    pid_t parent_pid = getpid();
     char *input;
-
+    char ** tokens;
+    int i;
     while (1) {
         display_prompt(); 
         input = read_line();     
-        input[strlen(input) - 1] = '\0';
+        tokens= get_arguments(input);
+        for(i=0;tokens[i];i++)
+            printf("%s\n",tokens[i]);
         
-        
-      
         pid_t pid = fork(); 
         
         if (pid < 0) { 
