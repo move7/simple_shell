@@ -4,13 +4,14 @@ int main()
 {
     char *input;
     char ** tokens;
-    int i;
+    int i, statut;
     while (1) {
         display_prompt(); 
         input = read_line();     
         tokens= get_arguments(input);
-        for(i=0;tokens[i];i++)
-            printf("%s\n",tokens[i]);
+        statut  = shell_execute(tokens);
+        if (statut == -1)
+            exit(EXIT_SUCCESS);
         
         pid_t pid = fork(); 
         
@@ -19,12 +20,12 @@ int main()
             exit(EXIT_FAILURE);
         }
         else if (pid == 0) { 
-            char *args[] = {input, NULL}; 
-            execvp(args[0], args); 
+            execvp(tokens[0], tokens); 
         }
         else { 
             wait(NULL);
         }
+        free(input);
     }
     return 0;
 }

@@ -17,7 +17,7 @@ int _strlen(char *str)
 
 
 /**
- * _puts - prints a string without a \n
+ * _puts - prints a string without a new line symbol
  * @str: string to be printed
  * Return: void
  */
@@ -31,53 +31,44 @@ void _puts(char *str)
 }
 
 /**
- *prompt - prints the shell prompt
- *
- *Return: void
+ * _strcmp - compares 2 strings if they are exactly the same
+ * @s1: first string to be compared
+ * @s2: second string to be compared
+ * 
+ * Return: 1 if strings are equal, otherwise -1
  */
-void display_prompt(void)
+int _strcmp(char *s1, char *s2)
 {
-	_puts(PROMPT);
-}
+	unsigned int i = 0;
 
-/**
- *read_line- get input from user
- *
- *Return: buffer with input
- */
-char *read_line(void)
-{
-	char *line;//[BUFFER];
-    size_t len = 0;
-    ssize_t nread;
+	if (_strlen(s1) != _strlen(s2))
+		return (-1);
 
-    nread = getline(&line, &len, stdin);
-	if (nread == EOF || nread == -1)
-		exit(EXIT_SUCCESS);
-    
-	return(line);
-}
-/**
- * get_arguments- array of parameters
- * @str: user input
- * Return: array of arg
- */
-char **get_arguments(char *str)
-{
-	char *token, *str_dup=str;
-	int i = 0;
-	
-	char **tokens = (char **)malloc(BUFFER*sizeof(char));
-	i = 0;
-	token = strtok(str,SEPARATORS);
-	
-	while (token!= NULL)
+	while (s1[i] != '\0' && s2[i] != '\0')
 	{
-		tokens[i]=token;
-		token = strtok(NULL,SEPARATORS);
+		if (s1[i] != s2[i])
+			return (-1);
 		i++;
 	}
-	tokens[i]=NULL;
-	return(tokens);
-  
+	return (1);
+}
+
+/**
+ * _strncmp - ccompares  the first N characters
+ * @s1: first string to be compared
+ * @s2: second  string to be compared
+ * @n: number of characters to be compared
+ * Return: 1 if strings are equal, otherwise -1
+ */
+int _strncmp(char *s1, char *s2, unsigned int n)
+{
+	unsigned int i = 0;
+
+	while (i < n)
+	{
+		if (s1[i] != s2[i])
+			return (-1);
+		i++;
+	}
+	return (1);
 }
