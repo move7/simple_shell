@@ -12,7 +12,7 @@
 #define BUFFER 1024
 #define PROMPT "(shell)$ "
 #define SEPARATORS " \t\n\r"
-
+extern char **environ;
 /**
  * struct built_in_command - linked list of built-in commands
  * @name: name of command
@@ -36,6 +36,8 @@ int _strlen(char *s);
 void _puts(char *str);
 int _strcmp(char *s1, char *s2);
 int _strncmp(char *s1, char *s2, unsigned int n);
+char *_strncpy(char *dest, char *src, unsigned int n);
+char *_concat_strings(char* s1, char* s2, char* s3);
 
 //------------------------display_prompt.c
 void display_prompt(void);
@@ -50,4 +52,9 @@ int shell_exit(void);
 
 //-----------------------------handl_exec.c
 int shell_execute(char **args);
+
+//-----------------------------get_path
+char *get_path_variable();
+char *_find_cmd_path(char *path, char *cmd);
+
 #endif
