@@ -81,7 +81,7 @@ int _strncmp(char *s1, char *s2, unsigned int n)
  */
 char *_strncpy(char *dest, char *src, unsigned int n)
 {
-	int i;
+	unsigned int i;
 
 	for (i = 0; i <= n; i++)
 		dest[i] = src[i];

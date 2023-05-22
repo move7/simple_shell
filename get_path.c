@@ -29,8 +29,18 @@ char *_find_cmd_path(char *path, char *cmd)
     char *token, *path_tmp, *separator = ":";
     struct stat st;
 
-    token = strtok(path,separator);
-     
+    if(cmd[0] == '/')
+    {
+        if(stat(cmd, &st) == 0 )
+            return (cmd);
+        else 
+            _perror(ERR_PATH);
+
+    }
+        
+
+    
+        token = strtok(path,separator);
     while (token)
     {
         path_tmp = _concat_strings(token,"/",cmd);
