@@ -130,7 +130,7 @@ char* _concat_strings(char* s1, char* s2, char* s3) {
 
     return result;
 }
-#include "shell.h"
+
 /**
  * _strtok - separates strings with delimiters
  * @line: It´s pointer to array we receive path.
