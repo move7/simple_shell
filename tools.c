@@ -81,9 +81,26 @@ int _strncmp(char *s1, char *s2, unsigned int n)
  */
 char *_strncpy(char *dest, char *src, unsigned int n)
 {
-	int i;
+	unsigned int i;
 
 	for (i = 0; i <= n; i++)
+		dest[i] = src[i];
+
+	return (dest);
+}
+
+/**
+ * *_strcpy - copies string pointed to by src to the buffer pointed to dest
+ * @dest: string destination
+ * @src: string source
+ * Return: the pointer to dest
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int i;
+	int j = _strlen(src);
+
+	for (i = 0; i <= j; i++)
 		dest[i] = src[i];
 
 	return (dest);
@@ -102,7 +119,7 @@ char* _concat_strings(char* s1, char* s2, char* s3) {
 
     char* result = malloc(len1 + len2 + len3 + 1);
     if (result == NULL) {
-        fprintf(stderr, "Error Memory allocation.\n");
+        _perror(ERR_MALLOC);
         return NULL;
     }
 
@@ -112,4 +129,46 @@ char* _concat_strings(char* s1, char* s2, char* s3) {
     result[len1 + len2 + len3] = '\0';
 
     return result;
+}
+#include "shell.h"
+/**
+ * _strtok - separates strings with delimiters
+ * @line: It´s pointer to array we receive path.
+ * @delim: It´s characters we mark off string in parts.
+ * Return: A pointer to the created token
+*/
+char *_strtok(char *line, char *delim)
+{
+	int j;
+	static char *str;
+	char *copystr;
+
+	if (line != NULL)
+		str = line;
+	for (; *str != '\0'; str++)
+	{
+		for (j = 0; delim[j] != '\0'; j++)
+		{
+			if (*str == delim[j])
+			break;
+		}
+		if (delim[j] == '\0')
+			break;
+	}
+	copystr = str;
+	if (*copystr == '\0')
+		return (NULL);
+	for (; *str != '\0'; str++)
+	{
+		for (j = 0; delim[j] != '\0'; j++)
+		{
+			if (*str == delim[j])
+			{
+				*str = '\0';
+				str++;
+				return (copystr);
+			}
+		}
+	}
+	return (copystr);
 }

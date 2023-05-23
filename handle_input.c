@@ -7,7 +7,7 @@
  */
 char *read_line(void)
 {
-	char *line;//[BUFFER];
+	char *line;
     size_t len = 0;
     ssize_t nread;
 
@@ -24,10 +24,15 @@ char *read_line(void)
  */
 char **get_arguments(char *str)
 {
-	char *token, *str_dup=str;
+	char *token;
 	int i = 0;
 	
 	char **tokens = (char **)malloc(BUFFER*sizeof(char));
+	if( tokens == NULL)
+	{
+		_perror(ERR_MALLOC);
+		return (NULL);
+	}
 	i = 0;
 	token = strtok(str,SEPARATORS);
 	
