@@ -88,6 +88,23 @@ char *_strncpy(char *dest, char *src, unsigned int n)
 
 	return (dest);
 }
+
+/**
+ * *_strcpy - copies string pointed to by src to the buffer pointed to dest
+ * @dest: string destination
+ * @src: string source
+ * Return: the pointer to dest
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int i;
+	int j = _strlen(src);
+
+	for (i = 0; i <= j; i++)
+		dest[i] = src[i];
+
+	return (dest);
+}
 /**
  * _concat_strings - concatanate 2 strings
  * @s1: first string to be compared
@@ -102,7 +119,7 @@ char* _concat_strings(char* s1, char* s2, char* s3) {
 
     char* result = malloc(len1 + len2 + len3 + 1);
     if (result == NULL) {
-        fprintf(stderr, "Error Memory allocation.\n");
+        _perror(ERR_MALLOC);
         return NULL;
     }
 

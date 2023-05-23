@@ -28,6 +28,11 @@ char **get_arguments(char *str)
 	int i = 0;
 	
 	char **tokens = (char **)malloc(BUFFER*sizeof(char));
+	if( tokens == NULL)
+	{
+		_perror(ERR_MALLOC);
+		return (NULL);
+	}
 	i = 0;
 	token = strtok(str,SEPARATORS);
 	
