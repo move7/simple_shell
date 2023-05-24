@@ -32,31 +32,6 @@ int shell_cd(char **args)
 		}
 		dir = oldpwd;
 	}
-	else if (getcwd(cwd, _strlen(cwd)) == NULL)
-	{
-		perror("getcwd");
-		return (-2);
-	}
-	else if (setenv("OLDPWD", cwd, 1) == -1)
-	{
-		perror("setenv");
-		return (-2);
-	}
-	else if (chdir(dir) == -1)
-	{
-		perror("chdir");
-		return (-2);
-	}
-	else if (getcwd(cwd, _strlen(cwd)) == NULL)
-	{
-		perror("getcwd");
-		return (-2);
-	}
-	else if (setenv("PWD", cwd, 1) == -1)
-	{
-		perror("setenv");
-		return (-2);
-	}
 	return (0);
 }
 
