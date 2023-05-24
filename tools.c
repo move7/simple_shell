@@ -9,19 +9,19 @@
  */
 int _strncmp(char *s1, char *s2, unsigned int n)
 {
-        unsigned int i = 0;
+	unsigned int i = 0;
 
-        while (i < n)
-        {
-                if (s1[i] != s2[i])
-                        return (-1);
-                i++;
-        }
-        return (1);
+	while (i < n)
+	{
+		if (s1[i] != s2[i])
+			return (-1);
+		i++;
+	}
+	return (1);
 }
 
 /**
- * *_strcnpy - copies string pointed to by src to the buffer pointed to dest
+ * *_strncpy - copies string pointed to by src to the buffer pointed to dest
  * @dest: string destination
  * @src: string source
  * @n: nuber of char to copied
@@ -31,12 +31,12 @@ int _strncmp(char *s1, char *s2, unsigned int n)
 
 char *_strncpy(char *dest, char *src, unsigned int n)
 {
-        unsigned int i;
+	unsigned int i;
 
-        for (i = 0; i <= n; i++)
-                dest[i] = src[i];
+	for (i = 0; i <= n; i++)
+		dest[i] = src[i];
 
-        return (dest);
+	return (dest);
 }
 
 /**
@@ -47,13 +47,13 @@ char *_strncpy(char *dest, char *src, unsigned int n)
  */
 char *_strcpy(char *dest, char *src)
 {
-        int i;
-        int j = _strlen(src);
+	int i;
+	int j = _strlen(src);
 
-        for (i = 0; i <= j; i++)
-                dest[i] = src[i];
+	for (i = 0; i <= j; i++)
+		dest[i] = src[i];
 
-        return (dest);
+	return (dest);
 }
 /**
  * _concat_strings - concatanate 2 strings
