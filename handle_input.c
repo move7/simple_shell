@@ -36,7 +36,6 @@ char **get_arguments(char *str)
 	}
 	i = 0;
 	token = _strtok(str, SEPARATORS);
-	
 	while (token != NULL)
 	{
 		tokens[i] = token;
