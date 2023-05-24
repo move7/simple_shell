@@ -32,14 +32,14 @@ extern char **environ;
  *
  * Description: struct for built-in functions.
  */
-typedef struct
+typedef struct built_in_command
 {
 	char *name;
 	int (*func)(char **args);
 } built_in_command;
 
-#define BUILT_IN_COMMANDS( \
-		{ "cd", shell_cd }, \
+#define BUILT_IN_COMMANDS \
+		({ "cd", shell_cd }, \
 		{ "exit", shell_exit }, \
 		{ "env", shell_env}, \
 		{ NULL, NULL })
