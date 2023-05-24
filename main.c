@@ -21,7 +21,9 @@ int main(void)
 		path = malloc(_strlen(path_var) + 1);
 		path = _strcpy(path, path_var); /*get_path_variable();*/
 		if (statut == -1)
+		{	free(input);
 			exit(EXIT_SUCCESS);
+		}
 		if (statut == 1)
 		{
 			char *envp[] = {NULL};
@@ -31,20 +33,27 @@ int main(void)
 			{
 				pid = fork();
 				if (pid < 0)
+				{
 					_perror(ERR_FORK);
+				}
 				else if (pid == 0)
 				{
 					execve(path_cmd, tokens, envp);
 					free(path_cmd);
 				}
 				else
+				{
 					wait(NULL);
+				}
+			/*	free(path_cmd);*/
 			}
 			else
 				_perror(ERR_PATH);
 		}
 		free(path);
 		free(input);
+		free(tokens);
+		free(path_var);
 	}
 	return (0);
 }
