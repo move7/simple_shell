@@ -25,10 +25,14 @@ char *get_path_variable()
 			path = _strcpy(path, path_var);
 			for (j = 0; environ_copy[j] != NULL; j++)
 				free(environ_copy[j]);
+			free(environ_copy);
 			return (path);
 		}
 		i++;
 	}
+	for (j = 0; environ_copy[j] != NULL; j++)
+		free(environ_copy[j]);
+	free(environ_copy);
 	return (NULL);
 }
 

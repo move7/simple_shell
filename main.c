@@ -22,6 +22,9 @@ int main(void)
 		path = _strcpy(path, path_var); /*get_path_variable();*/
 		if (statut == -1)
 		{	free(input);
+			free(path);
+			free(tokens);
+			free(path_var);
 			exit(EXIT_SUCCESS);
 		}
 		if (statut == 1)
@@ -53,7 +56,6 @@ int main(void)
 		free(path);
 		free(input);
 		free(tokens);
-		free(path_var);
 	}
 	return (0);
 }

@@ -7,7 +7,7 @@
  */
 char *read_line(void)
 {
-	char *line;
+	char *line = NULL;
 	size_t len = 0;
 	ssize_t nread;
 

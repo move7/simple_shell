@@ -9,7 +9,7 @@ int shell_cd(char **args)
 {
 	char *home = _getenv("HOME");
 	char *oldpwd = _getenv("PWD");
-	char cwd[1024];
+	/*char cwd[1024];*/
 	char *dir = args[0];
 
 	printf("dir = %s\n", home);
