@@ -53,6 +53,7 @@ int _strncmp(char *s1, char *s2, unsigned int n);
 char *_strncpy(char *dest, char *src, unsigned int n);
 char *_strcpy(char *dest, char *src);
 char *_concat_strings(char* s1, char* s2, char* s3);
+char *_strtok(char *line, char *delim);
 
 /*------------------------display_prompt.c -----*/
 void display_prompt(void);

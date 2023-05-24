@@ -85,7 +85,7 @@ char *_find_cmd_path(char *path, char *cmd)
 
     }
         
-    token = strtok(path,separator);
+    token = _strtok(path,separator);
     while (token)
     {
         path_tmp = _concat_strings(token,"/",cmd);
@@ -94,7 +94,7 @@ char *_find_cmd_path(char *path, char *cmd)
             return path_tmp;
         }
         free(path_tmp);
-        token = strtok(NULL,separator);
+        token = _strtok(NULL,separator);
     }   
     return (NULL);
 }
