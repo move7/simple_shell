@@ -86,7 +86,9 @@ char *_find_cmd_path(char *path, char *cmd)
 	if (cmd[0] == '/')
 	{
 		if (stat(cmd, &st) == 0)
+		{
 			return (cmd);
+		}
 		else
 			_perror(ERR_PATH);
 	}
