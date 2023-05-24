@@ -77,8 +77,10 @@ int _strncmp(char *s1, char *s2, unsigned int n)
  * @dest: string destination
  * @src: string source
  * @n: nuber of char to copied
+ *
  * Return: the pointer to dest
  */
+
 char *_strncpy(char *dest, char *src, unsigned int n)
 {
 	unsigned int i;
@@ -90,7 +92,7 @@ char *_strncpy(char *dest, char *src, unsigned int n)
 }
 
 /**
- * *_strcpy - copies string pointed to by src to the buffer pointed to dest
+ * _strcpy - copies string pointed to by src to the buffer pointed to dest
  * @dest: string destination
  * @src: string source
  * Return: the pointer to dest
@@ -109,6 +111,7 @@ char *_strcpy(char *dest, char *src)
  * _concat_strings - concatanate 2 strings
  * @s1: first string to be compared
  * @s2: second string to be compared
+ * @s3: third string to be compared
  *
  * Return: 1 if strings are equal, otherwise -1
  */
