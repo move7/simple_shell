@@ -38,13 +38,6 @@ typedef struct built_in_command
 	int (*func)(char **args);
 } built_in_command;
 
-#define BUILT_IN_COMMANDS \
-		({ "cd", shell_cd }, \
-		{ "exit", shell_exit }, \
-		{ "env", shell_env}, \
-		{ NULL, NULL })
-
-
 /*------------------------tools.c ------*/
 int _strlen(char *s);
 void _puts(char *str);

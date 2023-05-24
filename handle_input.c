@@ -41,6 +41,7 @@ char **get_arguments(char *str)
 		tokens[i] = token;
 		token = _strtok(NULL, SEPARATORS);
 		token = _strtok(str, SEPARATORS);
+	}
 	while (token != NULL)
 	{
 		tokens[i] = token;

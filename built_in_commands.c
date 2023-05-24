@@ -34,27 +34,27 @@ int shell_cd(char **args)
 	}
 	else if (getcwd(cwd, _strlen(cwd)) == NULL)
 	{
-		_perror("getcwd");
+		perror("getcwd");
 		return (-2);
 	}
 	else if (setenv("OLDPWD", cwd, 1) == -1)
 	{
-		_perror("setenv");
+		perror("setenv");
 		return (-2);
 	}
 	else if (chdir(dir) == -1)
 	{
-		_perror("chdir");
+		perror("chdir");
 		return (-2);
 	}
 	else if (getcwd(cwd, _strlen(cwd)) == NULL)
 	{
-		_perror("getcwd");
+		perror("getcwd");
 		return (-2);
 	}
 	else if (setenv("PWD", cwd, 1) == -1)
 	{
-		_perror("setenv");
+		perror("setenv");
 		return (-2);
 	}
 	return (0);

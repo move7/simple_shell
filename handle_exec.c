@@ -10,7 +10,12 @@
 int shell_execute(char **args)
 {
 	int i = 0;
-	built_in_command built_in_commands[] = { BUILT_IN_COMMANDS };
+	built_in_command built_in_commands[] = {
+		{ "cd", shell_cd },
+		{ "exit", shell_exit },
+		{ "env", shell_env},
+		{ NULL, NULL }
+	};
 
 	if (args[0] == NULL)
 		return (1);
