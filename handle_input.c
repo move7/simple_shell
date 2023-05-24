@@ -8,14 +8,13 @@
 char *read_line(void)
 {
 	char *line;
-    size_t len = 0;
-    ssize_t nread;
-
-    nread = getline(&line, &len, stdin);
+	size_t len = 0;
+	ssize_t nread;
+	
+	nread = getline(&line, &len, stdin);
 	if (nread == EOF || nread == -1)
 		exit(EXIT_SUCCESS);
-    
-	return(line);
+	return (line);
 }
 /**
  * get_arguments- array of parameters
@@ -26,23 +25,22 @@ char **get_arguments(char *str)
 {
 	char *token;
 	int i = 0;
+	char **tokens = (char **)malloc(BUFFER * sizeof(char));
 	
-	char **tokens = (char **)malloc(BUFFER*sizeof(char));
-	if( tokens == NULL)
+	if (tokens == NULL)
 	{
 		_perror(ERR_MALLOC);
 		return (NULL);
 	}
 	i = 0;
-	token = strtok(str,SEPARATORS);
+	token = _strtok(str, SEPARATORS);
 	
-	while (token!= NULL)
+	while (token != NULL)
 	{
-		tokens[i]=token;
-		token = strtok(NULL,SEPARATORS);
+		tokens[i] = token;
+		token = _strtok(NULL, SEPARATORS);
 		i++;
 	}
-	tokens[i]=NULL;
-	return(tokens);
-  
+	tokens[i] = NULL;
+	return (tokens);
 }
