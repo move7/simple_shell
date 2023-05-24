@@ -5,7 +5,7 @@
  *
  * Return: 0 on success, 1 on error
  */
-int main(void)
+int main()
 {
 	char *input, **tokens;
 	int statut;

@@ -12,7 +12,6 @@ char *read_line(void)
 	ssize_t nread;
 
 	nread = getline(&line, &len, stdin);
-	nread = getline(&line, &len, stdin);
 	if (nread == EOF || nread == -1)
 		exit(EXIT_SUCCESS);
 	return (line);
@@ -36,12 +35,6 @@ char **get_arguments(char *str)
 	}
 	i = 0;
 	token = _strtok(str, SEPARATORS);
-	while (token != NULL)
-	{
-		tokens[i] = token;
-		token = _strtok(NULL, SEPARATORS);
-		token = _strtok(str, SEPARATORS);
-	}
 	while (token != NULL)
 	{
 		tokens[i] = token;
