@@ -1,8 +1,9 @@
 #include "main.h"
 
 /**
-**shell_cd - changes the directory
-**Return: 1
+*shell_cd - changes the directory
+*@args: argument to pass
+ **Return: 1
 **/
 int shell_cd(char **args)
 {
@@ -31,29 +32,29 @@ int shell_cd(char **args)
 		}
 		dir = oldpwd;
 	}
-	if (getcwd(cwd, _strlen(cwd)) == NULL)
+	else if (getcwd(cwd, _strlen(cwd)) == NULL)
 	{
-		perror("getcwd");
+		_perror("getcwd");
 		return (-2);
 	}
-	if (setenv("OLDPWD", cwd, 1) == -1)
+	else if (setenv("OLDPWD", cwd, 1) == -1)
 	{
-		perror("setenv");
+		_perror("setenv");
 		return (-2);
 	}
-	if (chdir(dir) == -1)
+	else if (chdir(dir) == -1)
 	{
-		perror("chdir");
+		_perror("chdir");
 		return (-2);
 	}
-	if (getcwd(cwd, _strlen(cwd)) == NULL)
+	else if (getcwd(cwd, _strlen(cwd)) == NULL)
 	{
-		perror("getcwd");
+		_perror("getcwd");
 		return (-2);
 	}
-	if (setenv("PWD", cwd, 1) == -1)
+	else if (setenv("PWD", cwd, 1) == -1)
 	{
-		perror("setenv");
+		_perror("setenv");
 		return (-2);
 	}
 	return (0);
@@ -61,7 +62,8 @@ int shell_cd(char **args)
 
 /**
 **shell_exit - exits the shell
-**Return: 0
+**@var: the source string
+ **Return: 0
 **/
 int shell_exit(char __attribute__((__unused__)) **var)
 {
@@ -70,14 +72,15 @@ int shell_exit(char __attribute__((__unused__)) **var)
 
 /**
 **shell_env - prints environment
+**@var: the string enviroment
 **Return: void
 **/
 
 int shell_env(char __attribute__((__unused__)) **var)
 {
 	unsigned int i;
+	
 	i = 0;
-
 	while (environ[i] != NULL)
 	{
 		write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
@@ -86,5 +89,3 @@ int shell_env(char __attribute__((__unused__)) **var)
 	}
 	return (0);
 }
-
-
