@@ -34,7 +34,7 @@ void _puts(char *str)
  * _strcmp - compares 2 strings if they are exactly the same
  * @s1: first string to be compared
  * @s2: second string to be compared
- * 
+ *
  * Return: 1 if strings are equal, otherwise -1
  */
 int _strcmp(char *s1, char *s2)
@@ -109,26 +109,27 @@ char *_strcpy(char *dest, char *src)
  * _concat_strings - concatanate 2 strings
  * @s1: first string to be compared
  * @s2: second string to be compared
- * 
+ *
  * Return: 1 if strings are equal, otherwise -1
  */
-char* _concat_strings(char* s1, char* s2, char* s3) {
-    size_t len1 = strlen(s1);
-    size_t len2 = strlen(s2);
+char *_concat_strings(char *s1, char *s2, char *s3)
+{
+	size_t len1 = strlen(s1);
+	size_t len2 = strlen(s2);
 	size_t len3 = strlen(s3);
 
-    char* result = malloc(len1 + len2 + len3 + 1);
-    if (result == NULL) {
-        _perror(ERR_MALLOC);
-        return NULL;
-    }
+	char *result = malloc(len1 + len2 + len3 + 1);
 
-    _strncpy(result, s1, len1);
-    _strncpy(result + len1, s2, len2);
+	if (result == NULL)
+	{
+		_perror(ERR_MALLOC);
+		return (NULL);
+	}
+	_strncpy(result, s1, len1);
+	_strncpy(result + len1, s2, len2);
 	_strncpy(result + len1 + len2, s3, len3);
-    result[len1 + len2 + len3] = '\0';
-
-    return result;
+	result[len1 + len2 + len3] = '\0';
+	return (result);
 }
 
 /**

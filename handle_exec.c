@@ -10,7 +10,7 @@ int shell_execute(char **args)
     
     for (i = 0; built_in_commands[i].name != NULL; i++) 
         if (_strcmp(args[0], built_in_commands[i].name) == 1) 
-            return built_in_commands[i].func();
+            return built_in_commands[i].func(args+1);
 
     
     
