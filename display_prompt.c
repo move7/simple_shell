@@ -7,6 +7,6 @@
  */
 void display_prompt(void)
 {
-	if(isatty(STDIN_FILENO))
+	if (isatty(STDIN_FILENO))
 	_puts(PROMPT);
 }
