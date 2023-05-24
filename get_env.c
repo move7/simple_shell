@@ -19,9 +19,9 @@ char *_getenv(char *var)
 	{
 		if (_strncmp(environ_copy[i], var, length) == 1)
 		{
-			path_var = environ_copy[i] + length;	
+			path_var = environ_copy[i] + length;
 			path = malloc(_strlen(path_var) + 1);
-			if (path == NULL) 
+			if (path == NULL)
 			path_var = environ_copy[i] + length;
 			path = malloc(_strlen(path_var) + 1);
 			if (path == NULL)
@@ -30,7 +30,7 @@ char *_getenv(char *var)
 				return (NULL);
 			}
 			path = _strcpy(path, path_var);
-			for (j = 0; environ_copy[j] != NULL; j++) 
+			for (j = 0; environ_copy[j] != NULL; j++)
 				free(environ_copy[j]);
 			return (path);
 		}

@@ -79,7 +79,7 @@ int shell_exit(char __attribute__((__unused__)) **var)
 int shell_env(char __attribute__((__unused__)) **var)
 {
 	unsigned int i;
-	
+
 	i = 0;
 	while (environ[i] != NULL)
 	{
