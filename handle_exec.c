@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * shell_execute - prompt to execute shell
+ * @args: argument passed
+ *
+ *  Return: Always 0
+ */
+
 int shell_execute(char **args)
 {
 	int i = 0;

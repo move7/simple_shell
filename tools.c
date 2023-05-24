@@ -59,6 +59,7 @@ char *_strcpy(char *dest, char *src)
  * _concat_strings - concatanate 2 strings
  * @s1: first string to be compared
  * @s2: second string to be compared
+ * @s3: third string to be compared
  *
  * Return: 1 if strings are equal, otherwise -1
  */

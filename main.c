@@ -1,6 +1,13 @@
 #include "main.h"
 
-int main(void)
+/**
+ * main - entry point
+ * @ac: arg count
+ * @av: arg vector
+ *
+ * Return: 0 on success, 1 on error
+ */
+int main(int ac, char **av)
 {
 	char *input, **tokens;
 	int statut;
