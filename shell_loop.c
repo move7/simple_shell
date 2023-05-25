@@ -8,7 +8,7 @@
  */
 void shell_loop(char *path_var)
 {
-	char *input, *envp[] = {NULL}, **tokens, *path_cmd, *path;
+	char *input, *envp[] = {NULL}, **tokens = NULL, *path_cmd = NULL, *path = NULL;
 	int statut;
 	pid_t pid;
 
@@ -16,6 +16,8 @@ void shell_loop(char *path_var)
 	{
 		display_prompt();
 		input = read_line();
+		if(input == NULL)
+			break;
 		tokens = get_arguments(input);
 		statut = shell_execute(tokens);
 		path = malloc(_strlen(path_var) + 1);

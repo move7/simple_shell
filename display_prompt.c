@@ -9,4 +9,5 @@ void display_prompt(void)
 {
 	if (isatty(STDIN_FILENO))
 	_puts(PROMPT);
+	fflush(stdout);
 }
