@@ -21,6 +21,7 @@ int main(void)
 		path = malloc(_strlen(path_var) + 1);
 		path = _strcpy(path, path_var); /*get_path_variable();*/
 		if (statut == -1)
+		{
 			free_all(tokens, path, input, path_var, 1);
 			exit(EXIT_SUCCESS);
 		}
