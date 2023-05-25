@@ -7,7 +7,7 @@
  */
 int main(void)
 {
-	char *input, **tokens;
+	char *input = NULL, char *envp[] = {NULL}, **tokens;
 	int statut;
 	char *path_var = get_path_variable(), *path_cmd, *path;
 	pid_t pid;
@@ -27,8 +27,6 @@ int main(void)
 		}
 		if (statut == 1)
 		{
-			char *envp[] = {NULL};
-
 			path_cmd = _find_cmd_path(path, tokens[0]);
 			if (path_cmd)
 			{
