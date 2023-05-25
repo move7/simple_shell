@@ -73,4 +73,7 @@ void _perror(int error);
 
 /*-----------------------------get_env -----*/
 char *_getenv(char *var);
+
+void free_all(char **tokens, char *path, char *input,
+		char *fullpath, int flag);
 #endif
