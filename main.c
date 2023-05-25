@@ -7,7 +7,7 @@
  */
 int main(void)
 {
-	char *input = NULL, char *envp[] = {NULL}, **tokens;
+	char *input = NULL, *envp[] = {NULL}, **tokens;
 	int statut;
 	char *path_var = get_path_variable(), *path_cmd, *path;
 	pid_t pid;
