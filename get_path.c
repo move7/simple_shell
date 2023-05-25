@@ -19,6 +19,9 @@ char *get_path_variable()
 			path = malloc(_strlen(path_var) + 1);
 			if (path == NULL)
 			{
+				for (j = 0; environ_copy[j] != NULL; j++)
+					free(environ_copy[j]);
+				free(environ_copy);
 				_perror(ERR_MALLOC);
 				return (NULL);
 			}

@@ -76,4 +76,6 @@ char *_getenv(char *var);
 
 void free_all(char **tokens, char *path, char *input,
 		char *fullpath, int flag);
+
+void shell_loop(char *path_var);
 #endif

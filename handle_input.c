@@ -11,9 +11,13 @@ char *read_line(void)
 	size_t len = 0;
 	ssize_t nread;
 
+	fflush(stdout);
 	nread = getline(&line, &len, stdin);
 	if (nread == EOF || nread == -1)
+	{
+		free(line);
 		exit(EXIT_SUCCESS);
+	}
 	return (line);
 }
 
