@@ -10,6 +10,7 @@ void shell_loop(void)
 	char *input, *envp[] = {NULL}, **tokens = NULL, *path_cmd, *path = NULL;
 	int statut;
 	pid_t pid;
+	struct stat st;
 
 	while (1)
 	{
@@ -40,7 +41,7 @@ void shell_loop(void)
 					execve(path_cmd, tokens, envp);
 				else
 					wait(NULL);
-				if (tokens[0][0] != '/')
+				if (stat(tokens[0], &st) != 0)
 					free(path_cmd);
 			}
 			else
