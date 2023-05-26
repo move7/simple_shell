@@ -15,9 +15,8 @@ char *read_line(void)
 	nread = getline(&line, &len, stdin);
 	if (nread == EOF || nread == -1)
 	{
-		/*free(line);*/
-		/*exit(EXIT_SUCCESS);*/
-		return (NULL);
+		free(line);
+		exit(EXIT_SUCCESS);
 	}
 	return (line);
 }

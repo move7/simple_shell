@@ -7,8 +7,8 @@
  */
 int main(void)
 {
-	char *path_var = get_path_variable();
-	shell_loop(path_var);
-	free(path_var);
+	/*char *path_var = get_path_variable();*/
+	shell_loop();/*(path_var);*/
+	/*free(path_var);*/
 	return (0);
 }

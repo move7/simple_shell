@@ -45,7 +45,7 @@ int _strcmp(char *s1, char *s2);
 int _strncmp(char *s1, char *s2, unsigned int n);
 char *_strncpy(char *dest, char *src, unsigned int n);
 char *_strcpy(char *dest, char *src);
-char *_concat_strings(char *s1, char *s2, char *s3);
+char *_concat_strings(char *s1, char *s2);
 char *_strtok(char *line, char *delim);
 
 /*------------------------display_prompt.c -----*/
@@ -74,8 +74,7 @@ void _perror(int error);
 /*-----------------------------get_env -----*/
 char *_getenv(char *var);
 
-void free_all(char **tokens, char *path, char *input,
-		char *fullpath, int flag);
+void free_all(char **tokens, char *path, char *input);
 
-void shell_loop(char *path_var);
+void shell_loop(void);/*(char *path_var);*/
 #endif

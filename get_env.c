@@ -12,7 +12,7 @@ char *_getenv(char *var)
 	char *path, *path_var = NULL;
 	char **environ_copy = duplicate_environ();
 
-	var = _concat_strings(var, "=", "");
+	_concat_strings(var, "=");
 	length = _strlen(var);
 
 	while (environ_copy[i] != NULL)

@@ -2,13 +2,12 @@
 
 /**
  * shell_loop - loop for shell
- *@path_var: path
  *
  * Return: void
  */
-void shell_loop(char *path_var)
+void shell_loop(void)
 {
-	char *input, *envp[] = {NULL}, **tokens = NULL, *path_cmd = NULL, *path = NULL;
+	char *input, *envp[] = {NULL}, **tokens = NULL, *path_cmd, *path = NULL;
 	int statut;
 	pid_t pid;
 
@@ -16,15 +15,12 @@ void shell_loop(char *path_var)
 	{
 		display_prompt();
 		input = read_line();
-		if(input == NULL)
-			break;
 		tokens = get_arguments(input);
 		statut = shell_execute(tokens);
-		path = malloc(_strlen(path_var) + 1);
-		path = _strcpy(path, path_var); /*get_path_variable();*/
+		path = get_path_variable();
 		if (statut == -1)
 		{
-			free_all(tokens, path, input, path_var, 1);
+			free_all(tokens, path, input);
 			exit(EXIT_SUCCESS);
 		}
 		if (statut == 1)
@@ -36,16 +32,15 @@ void shell_loop(char *path_var)
 				if (pid < 0)
 					_perror(ERR_FORK);
 				else if (pid == 0)
-				{
 					execve(path_cmd, tokens, envp);
-					free(path_cmd);
-				}
 				else
 					wait(NULL);
+				if (tokens[0][0] != '/')
+					free(path_cmd);
 			}
 			else
 				_perror(ERR_PATH);
 		}
-		free_all(tokens, path, input, path_var, 0);
+		free_all(tokens, path, input);
 	}
 }

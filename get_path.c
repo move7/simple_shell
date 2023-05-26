@@ -25,7 +25,7 @@ char *get_path_variable()
 				_perror(ERR_MALLOC);
 				return (NULL);
 			}
-			path = _strcpy(path, path_var);
+			strcpy(path, path_var);
 			for (j = 0; environ_copy[j] != NULL; j++)
 				free(environ_copy[j]);
 			free(environ_copy);
@@ -87,7 +87,7 @@ char **duplicate_environ()
  */
 char *_find_cmd_path(char *path, char *cmd)
 {
-	char *token, *path_tmp, *separator = ":";
+	char *token, *path_tmp = NULL, *separator = ":";
 	struct stat st;
 
 	if (cmd[0] == '/')
@@ -102,7 +102,10 @@ char *_find_cmd_path(char *path, char *cmd)
 	token = _strtok(path, separator);
 	while (token)
 	{
-		path_tmp = _concat_strings(token, "/", cmd);
+		path_tmp = malloc(_strlen(token) + _strlen(cmd) + 2);
+		_strcpy(path_tmp, token);
+		path_tmp = _concat_strings(path_tmp, "/");
+		path_tmp = _concat_strings(path_tmp, cmd);
 		if (stat(path_tmp, &st) == 0 && st.st_mode & S_IXUSR)
 		{
 			return (path_tmp);
