@@ -16,7 +16,10 @@ void shell_loop(void)
 		display_prompt();
 		input = read_line();
 		if (_strcmp(input, "") == 1)
+		{
+			free(input);
 			continue;
+		}
 		tokens = get_arguments(input);
 		statut = shell_execute(tokens);
 		path = get_path_variable();
