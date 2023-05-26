@@ -19,6 +19,8 @@ char *read_line(void)
 		exit(EXIT_SUCCESS);
 	}
 	remove_comments(line);
+	if (line[nread - 1] == '\n')
+		line[nread - 1] = '\0';
 	return (line);
 }
 
