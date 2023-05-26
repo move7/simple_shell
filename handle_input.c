@@ -18,6 +18,7 @@ char *read_line(void)
 		free(line);
 		exit(EXIT_SUCCESS);
 	}
+	remove_comments(line);
 	return (line);
 }
 
@@ -47,4 +48,23 @@ char **get_arguments(char *str)
 	}
 	tokens[i] = NULL;
 	return (tokens);
+}
+/**
+ * remove_comments - remove comments by replacing '#' with '\0'
+ * @input: address of the string to modify
+ *
+ * Return: Always 0;
+ */
+void remove_comments(char *input)
+{
+	int i;
+
+	for (i = 0; input[i] != '\0'; i++)
+	{
+		if (input[i] == '#' && (!i || input[i - 1] == ' '))
+		{
+			input[i] = '\0';
+			break;
+		}
+	}
 }

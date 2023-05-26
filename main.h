@@ -54,6 +54,7 @@ void display_prompt(void);
 /*-----------------------------handl_input.c -----*/
 char *read_line(void);
 char **get_arguments(char *str);
+void remove_comments(char *input);
 
 /*-----------------------------built_in_commands.c -----*/
 int shell_cd(char **dir);
