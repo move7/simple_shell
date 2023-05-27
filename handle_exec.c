@@ -26,7 +26,6 @@ int shell_execute(char **args)
 }
 /**
  * exec_process - execute the command
- * @path: path to the file
  *@arg: arguments
  *
  * Return: void
@@ -36,8 +35,8 @@ void exec_process(char **arg)
 	char *path_cmd = NULL, *path = NULL;
 	pid_t pid;
 	char *envp[] = {NULL};
-	path = get_path_variable();
 
+	path = get_path_variable();
 	path_cmd = _find_cmd_path(path, arg[0]);
 	if (path_cmd)
 	{
@@ -48,12 +47,40 @@ void exec_process(char **arg)
 			execve(path_cmd, arg, envp);
 		else
 			wait(NULL);
-	/*	if(_strcmp(path_cmd, path) != 1)
-			free(path_cmd);*/
+		free(path);
 	}
 	else
+	{
+		free(path);
 		_perror(ERR_PATH);
-	free(path);
+	}
 	free(arg);
+}
+/**
+ * _atoi - converts a string to an integer
+ * @s: the string to be converted
+ * Return: 0 if no numbers in string, converted number otherwise
+ *       -1 on error
+ */
+int _atoi(char *s)
+{
+	int i = 0;
+	unsigned long int result = 0;
+
+	if (*s == '+')
+		s++;
+	for (i = 0;  s[i] != '\0'; i++)
+	{
+		if (s[i] >= '0' && s[i] <= '9')
+		{
+			result *= 10;
+			result += (s[i] - '0');
+			if (result > INT_MAX)
+				return (-1);
+		}
+		else
+			return (-1);
+	}
+	return (result);
 }
 

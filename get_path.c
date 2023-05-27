@@ -106,7 +106,7 @@ char *_find_cmd_path(char *path, char *cmd)
 		free(path_tmp);
 		token = _strtok(NULL, separator);
 	}
-	free(path_tmp);
+	/*free(path_tmp);*/
 	return (NULL);
 }
 /**

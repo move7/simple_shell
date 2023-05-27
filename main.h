@@ -8,6 +8,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <limits.h>
 
 #define BUFFER 1024
 #define PROMPT "(shell)$ "
@@ -64,6 +65,7 @@ int shell_env(char __attribute__((__unused__)) **var);
 /*-----------------------------handl_exec.c -----*/
 int shell_execute(char **args);
 void exec_process(char **arg);
+int _atoi(char *s);
 
 /*-----------------------------get_path -----*/
 char *get_path_variable();
