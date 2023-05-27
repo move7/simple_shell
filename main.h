@@ -59,7 +59,7 @@ void remove_comments(char *input);
 
 /*-----------------------------built_in_commands.c -----*/
 int shell_cd(char **dir);
-int shell_exit(char __attribute__((__unused__)) **var);
+int shell_exit(char **arg);
 int shell_env(char __attribute__((__unused__)) **var);
 
 /*-----------------------------handl_exec.c -----*/

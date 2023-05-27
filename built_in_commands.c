@@ -7,13 +7,9 @@
 **/
 int shell_cd(char **args)
 {
-	char *home = _getenv("HOME");
-	char *oldpwd = _getenv("PWD");
-	/*char cwd[1024];*/
+	char *home = _getenv("HOME"), *oldpwd = _getenv("PWD"), cwd[1024];
 	char *dir = args[0];
 
-	printf("dir = %s\n", home);
-	printf("dir = %s\n", oldpwd);
 	if (dir == NULL || _strcmp(dir, "~") == 1)
 	{
 		if (home == NULL)
@@ -32,16 +28,54 @@ int shell_cd(char **args)
 		}
 		dir = oldpwd;
 	}
+	if (getcwd(cwd, _strlen(cwd)) == NULL)
+	{
+		perror("getcwd");
+		return (-2);
+	}
+	if (setenv("OLDPWD", cwd, 1) == -1)
+	{
+		perror("setenv");
+		return (-2);
+	}
+	if (chdir(dir) == -1)
+	{
+		perror("chdir");
+		return (-2);
+	}
+	if (getcwd(cwd, _strlen(cwd)) == NULL)
+	{
+		perror("getcwd");
+		return (-2);
+	}
+	if (setenv("PWD", cwd, 1) == -1)
+	{
+		perror("setenv");
+		return (-2);
+	}
 	return (0);
 }
 
 /**
 **shell_exit - exits the shell
-**@var: the source string
- **Return: 0
+**@arg: the source string
+**Return: -1 or 1
 **/
-int shell_exit(char __attribute__((__unused__)) **var)
+int shell_exit(char **arg)
 {
+
+	int check;
+
+	if (arg[1])
+	{
+		check = _atoi(arg[1]);
+		if (check == -1)
+		{
+			perror("Illegal number: ");
+			return (-2);
+		}
+		return (-1);
+	}
 	return (-1);
 }
 
