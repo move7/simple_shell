@@ -63,11 +63,13 @@ int shell_env(char __attribute__((__unused__)) **var);
 
 /*-----------------------------handl_exec.c -----*/
 int shell_execute(char **args);
+void exec_process(char **arg);
 
 /*-----------------------------get_path -----*/
 char *get_path_variable();
 char *_find_cmd_path(char *path, char *cmd);
 char **duplicate_environ();
+int is_cmd(char *path);
 
 /*-----------------------------handle_errors -----*/
 void _perror(int error);
@@ -75,7 +77,7 @@ void _perror(int error);
 /*-----------------------------get_env -----*/
 char *_getenv(char *var);
 
-void free_all(char **tokens, char *path, char *input);
+void free_all(char **tokens, char *input);
 
 void shell_loop(void);/*(char *path_var);*/
 #endif

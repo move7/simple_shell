@@ -90,12 +90,8 @@ char *_find_cmd_path(char *path, char *cmd)
 	char *token, *path_tmp = NULL, *separator = ":";
 	struct stat st;
 
-		if (stat(cmd, &st) == 0)
-		{
+		if (is_cmd(cmd) == 1)
 			return (cmd);
-		}
-		else
-			_perror(ERR_PATH);
 	token = _strtok(path, separator);
 	while (token)
 	{
@@ -112,4 +108,20 @@ char *_find_cmd_path(char *path, char *cmd)
 	}
 	free(path_tmp);
 	return (NULL);
+}
+/**
+ * is_cmd - determines if a file is an executable command
+ * @path: path to the file
+ *
+ * Return: 1 if true, 0 otherwise
+ */
+int is_cmd(char *path)
+{
+	struct stat st;
+
+	if(!path || stat(path, &st))
+		return (0);
+	if (st.st_mode & S_IFREG)
+		return (1);
+	return (0);
 }

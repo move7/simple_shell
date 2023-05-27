@@ -6,9 +6,8 @@
  * @input: pointer to user input buffer
  * Return: void
  */
-void free_all(char **tokens, char *path, char *input)
+void free_all(char **tokens, char *input)
 {
-	free(path);
 	free(tokens);
 	free(input);
 }
