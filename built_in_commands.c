@@ -66,9 +66,9 @@ int shell_exit(char **arg)
 
 	int check;
 
-	if (arg[1])
+	if (arg[0])
 	{
-		check = _atoi(arg[1]);
+		check = _atoi(arg[0]);
 		if (check == -1)
 		{
 			perror("Illegal number: ");
