@@ -34,18 +34,18 @@ char **get_arguments(char *str)
 	char *token;
 	int i = 0;
 	char **tokens = (char **)malloc(BUFFER * sizeof(char));
-
+	
 	if (tokens == NULL)
 	{
 		_perror(ERR_MALLOC);
 		return (NULL);
 	}
 	i = 0;
-	token = _strtok(str, SEPARATORS);
+	token = strtok(str, SEPARATORS);
 	while (token != NULL)
 	{
 		tokens[i] = token;
-		token = _strtok(NULL, SEPARATORS);
+		token = strtok(NULL, SEPARATORS);
 		i++;
 	}
 	tokens[i] = NULL;

@@ -7,8 +7,7 @@
 **/
 int shell_cd(char **args)
 {
-	char *home = _getenv("HOME"), *oldpwd = _getenv("PWD"), cwd[1024];
-	char *dir = args[0];
+	char *home = _getenv("HOME"), *oldpwd = _getenv("PWD"), cwd[BUFFER], *dir = args[0];
 
 	if (dir == NULL || _strcmp(dir, "~") == 1)
 	{
@@ -28,7 +27,7 @@ int shell_cd(char **args)
 		}
 		dir = oldpwd;
 	}
-	if (getcwd(cwd, _strlen(cwd)) == NULL)
+	if (getcwd(cwd, BUFFER) == NULL)
 	{
 		perror("getcwd");
 		return (-2);
@@ -43,7 +42,7 @@ int shell_cd(char **args)
 		perror("chdir");
 		return (-2);
 	}
-	if (getcwd(cwd, _strlen(cwd)) == NULL)
+	if (getcwd(cwd, BUFFER) == NULL)
 	{
 		perror("getcwd");
 		return (-2);
